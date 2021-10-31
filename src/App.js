@@ -163,6 +163,7 @@ const App = () => {
   return (
     <>
       <div className="container">
+        <div className="row text-center"><h2>Bingo App Code Challenge by Ameer Hamza for sensory-minds</h2></div>
         <div className="row">
           <div className="col-lg-6 col-sm-12">
             <BingoTable player={"Player 1"} />
