@@ -1,38 +1,150 @@
-.App {
+.main-content {
+  max-width: 600px;
+  width: 100%;
+  margin: 4em auto 0;
+  overflow: hidden;
+}
+
+.title {
+  background: #305457;
+  color: #fff;
+  padding: 30px 10px;
   text-align: center;
+  font-size: 24px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title span {
+  display: none;
+}
+.title span:nth-child(1) {
+  display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bingo-card {
+  background: #0f929b;
+  padding: 10px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: repeat(5, 110px);
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 50px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.bingo-card__item {
+  background: #305457;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  text-align: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1.35;
+  -webkit-user-select: none;
+  user-select: none;
+  box-shadow: 3px 3px 2px #005c63;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.bingo-card__item.active span {
+  z-index: 1000;
+}
+.bingo-card__item.bingoTile {
+  background: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.bingo-card__item.bingoTile::after {
+  background: radial-gradient(circle at 100px 100px, #d70909, #000000);
+}
+
+.bingo-card__item:after {
+  height: 100px;
+  width: 100px;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  background: radial-gradient(circle at 100px 100px, #0f929b, #000000);
+  top: 0;
+  left: 0;
+  content: "\274c";
+  font-size: 50px;
+  line-height: 100px;
+}
+.bingo-card__item.active:after {
+  opacity: 0.7;
+}
+
+.bingo-card__item {
+  padding: 15px;
+}
+
+.bingoed {
+  background: black;
+}
+.bingoed:after {
+  background: radial-gradient(circle at 100px 100px, #d70909, #000000);
+}
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .bingo-card {
+    padding: 7px;
+    grid-gap: 8px;
+    grid-template-rows: repeat(5, 80px);
+    grid-template-columns: repeat(5, 80px);
   }
-  to {
-    transform: rotate(360deg);
+  .bingo-card__item {
+    font-size: 10px;
+  }
+  .bingo-card__item:after {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .bingo-card {
+    padding: 5px;
+    grid-gap: 5px;
+    grid-template-rows: repeat(5, 75px);
+    grid-template-columns: repeat(5, 75px);
+  }
+  .bingo-card__item {
+    font-size: 10px;
+  }
+  .bingo-card__item:after {
+    height: 75px;
+    width: 75px;
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .bingo-card {
+    padding: 8px;
+    grid-gap: 5px;
+    grid-template-rows: repeat(5, 90px);
+    grid-template-columns: repeat(5, 53px);
+  }
+  .bingo-card__item {
+    font-size: 10px;
+  }
+  .bingo-card__item:after {
+    height: 90px;
+    width: 50px;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 380px) and (min-width: 340px) {
+  .bingo-card {
+    padding: 8px;
+    grid-gap: 5px;
+    grid-template-rows: repeat(5, 90px);
+    grid-template-columns: repeat(5, 65px);
+  }
+  .bingo-card__item {
+    font-size: 10px;
+  }
+  .bingo-card__item:after {
+    height: 90px;
+    width: 65px;
+    font-size: 30px;
   }
 }
